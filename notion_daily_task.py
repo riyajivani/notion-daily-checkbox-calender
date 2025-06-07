@@ -2,9 +2,10 @@ import requests
 from datetime import datetime
 import os
 
-NOTION_TOKEN = os.getenv("NOTION_TOKEN")
+NOTION_TOKEN = os.environ("NOTION_TOKEN")
 DATABASE_ID = os.getenv("DATABASE_ID")
-
+print("Database ID from secret:", DATABASE_ID)
+print("NOTION_TOKEN from secret:", NOTION_TOKEN)
 headers = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
     "Notion-Version": "2022-06-28",

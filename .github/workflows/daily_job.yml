@@ -1,26 +1,26 @@
-name: Daily Notion Checkbox Job
+name: yearly_checkboxes
 
 on:
   schedule:
-    - cron: '0 9 * * *'   # Runs every day at 09:00 UTC
-  workflow_dispatch:       # Allows manual run from GitHub UI
+    - cron: '0 0 1 1 *'  # 00:00 UTC on Jan 1 every year
+  workflow_dispatch:     # Allow manual trigger
 
 jobs:
-  add_daily_checkbox:
+  generate_yearly_checkboxes:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.x'
 
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run Notion Daily Task script
+      - name: Run yearly checkboxes script
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        run: python notion_daily_task.py
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
+        run: python yearly_checkboxes.py

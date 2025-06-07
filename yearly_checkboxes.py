@@ -33,7 +33,7 @@ def create_checkbox_entry(entry_date):
 
 def generate_yearly_entries():
     year = date.today().year
-    start = date(year, 1, 1)~
+    start = date(year, 1, 1)
     end = date(year, 12, 31)
     current = start
 

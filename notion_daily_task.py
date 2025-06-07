@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 
 NOTION_TOKEN = "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"
-DATABASE_ID = "20ba6b2eb1ea80408f8fcfb834f29c37"
+DATABASE_ID = "220ba6b2eb1ea80e89ecce8e9c5a3a447"
 headers = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
     "Notion-Version": "2022-06-28",

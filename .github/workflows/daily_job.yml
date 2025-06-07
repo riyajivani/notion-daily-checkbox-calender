@@ -1,0 +1,26 @@
+name: Daily Notion Checkbox Job
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # Runs every day at 09:00 UTC
+  workflow_dispatch:       # Allows manual run from GitHub UI
+
+jobs:
+  add_daily_checkbox:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Notion Daily Task script
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: python notion_daily_task.py
